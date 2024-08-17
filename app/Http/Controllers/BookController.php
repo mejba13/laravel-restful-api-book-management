@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class BookController extends Controller
 {
     public function index()
     {
-        return Book::all();
+        $books = Book::all();
+        Log::info('Books:', ['books' => $books]);
+        return $books;
     }
 
     public function store(Request $request)
